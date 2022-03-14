@@ -19,7 +19,7 @@ namespace QuanLyNhanSu.DAO
 
         private DataAccess() { }
 
-        string connectionString = @"Data Source=ADMIN;Initial Catalog=TT_QL_hs_gv;Integrated Security=True";
+        string connectionString = @"Data Source=ADMIN;Initial Catalog=QuanLyNhanSu;Integrated Security=True";
 
         public DataTable ExecuteQuery(string query, object[] parameter = null)
         {
@@ -99,6 +99,22 @@ namespace QuanLyNhanSu.DAO
                 connection.Close();
             }
             return data;
+        }
+
+        public DataTable getTable(String sql)
+        {
+            DataTable dt = new DataTable();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                if (connection.State == ConnectionState.Closed)
+                {
+                    connection.Open();
+                }
+                SqlDataAdapter da = new SqlDataAdapter(sql, connection);
+                da.Fill(dt);
+                connection.Close();
+            }
+            return dt;
         }
     }
 }
