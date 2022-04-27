@@ -34,6 +34,12 @@ namespace QuanLyNhanSu.DAO
             return result > 0;
         }
 
+        public bool Update(int idNhanVien, string tenNhanVien, string gioiTinh, DateTime ngaySinh, string diaChi, string sdt, int luong, int idLopHoc)
+        {
+            int result = DataAccess.Instance.ExecuteNonQuery("[dbo].[update_NhanVien] @idNV , @gioitinhNV , @tenNV , @ngaySinhNV , @diachiNV , @sdtNV , @luong_NV , @idPB", new object[] { idNhanVien, gioiTinh, tenNhanVien, ngaySinh, diaChi, sdt, luong, idLopHoc });
+
+            return result > 0;
+        }
         public String selectPhongBan(String maPb)
         {
             String tenPB;
