@@ -41,7 +41,12 @@ namespace QuanLyNhanSu.DAO
             tenPB = DataAccess.Instance.ExecuteScalar(sql).ToString();
             return tenPB;
         }
+        public bool Delete(int idNhanVien)
+        {
+             int result = DataAccess.Instance.ExecuteNonQuery("[dbo].[delete_NhanVien] @idNV", new object[] { idNhanVien });
 
+             return result > 0;
+        }
         public List<PhongBanDTO> GetListPhongBan()
         {
             List<PhongBanDTO> list = new List<PhongBanDTO>();
@@ -53,5 +58,16 @@ namespace QuanLyNhanSu.DAO
             }
             return list;
         }
+        public List<NhanVienDTO> Search(string searchValue)
+        {
+            List<NhanVienDTO> list = new List<NhanVienDTO>();
+             DataTable data = DataAccess.Instance.ExecuteQuery("[dbo].[search_NhanVien] @searchString", new object[] { searchValue });
+            foreach (DataRow item in data.Rows)
+            {
+            NhanVienDTO entry = new NhanVienDTO(item);
+            list.Add(entry);
+            }
+            return list;
+        }        
     }
 }
