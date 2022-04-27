@@ -34,8 +34,33 @@ namespace QuanLyNhanSu.DAO
             int result = DataAccess.Instance.ExecuteNonQuery("[dbo].[insertPhongBan] @tenPB , @sdtPB , @motaPB", new object[] { tenPhongBan, sdt, mota });
             return result > 0;
         }
+        public bool Update(int idPB, string tenPhongBan, string sdt, string mota)
+        {
+            int result = DataAccess.Instance.ExecuteNonQuery("[dbo].[update_PhongBan] @idPB , @tenPB , @sdtPB , @motaPB", new object[] { idPB, tenPhongBan, sdt, mota });
 
-    
+            return result > 0;
+        }
 
+        public bool Delete(int idPhongBan)
+        {
+            int result = DataAccess.Instance.ExecuteNonQuery("[dbo].[delete_PhongBan] @idPB", new object[] { idPhongBan });
+
+            return result > 0;
+        }
+
+        public List<PhongBanDTO> Search(string searchValue)
+        {
+            List<PhongBanDTO> list = new List<PhongBanDTO>();
+            DataTable data = DataAccess.Instance.ExecuteQuery("[dbo].[search_PhongBan] @searchString", new object[] { searchValue });
+            foreach (DataRow item in data.Rows)
+            {
+                PhongBanDTO entry = new PhongBanDTO(item);
+                list.Add(entry);
+            }
+            return list;
+        }
     }
+
+
+}
 }

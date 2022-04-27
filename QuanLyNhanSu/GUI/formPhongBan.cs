@@ -97,22 +97,70 @@ namespace QuanLyNhanSu.GUI
 
         private void suaButton_Click(object sender, EventArgs e)
         {
+            int idPB;
+            Int32.TryParse(idLabel.Text.Trim(), out idPB);
+            string tenPB = tenPBTbox.Text.Trim();
+            string sdt = sdtPbTB.Text.Trim();
+            string mota = moTaTB.Text.Trim();
 
+            try
+            {
+                if (tenPB == "" || idPB == -1 || sdt == "" || mota == "")
+                {
+                    MessageBox.Show("Vui lòng điền đầy đủ thông tin!");
+                    return;
+                }
+                PhongBanDAO.Instance.Update(idPB, tenPB, sdt, mota);
+                MessageBox.Show("Sửa thành công!");
+                PBdgv.DataSource = pbDAO.GetAll();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show("Có lỗi xảy ra!" + err.ToString());
+                PBdgv.DataSource = pbDAO.GetAll();
+            }
         }
 
         private void xoaButton_Click(object sender, EventArgs e)
         {
-
+            int idPB;
+            Int32.TryParse(idLabel.Text.Trim(), out idPB);
+            try
+            {
+                PhongBanDAO.Instance.Delete(idPB);
+                MessageBox.Show("Xóa thành công!");
+                PBdgv.DataSource = pbDAO.GetAll();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show("Có lỗi xảy ra!" + err.ToString());
+                PBdgv.DataSource = pbDAO.GetAll();
+            }
         }
 
         private void searchButton_Click(object sender, EventArgs e)
         {
-
+            string str = searchTB.Text.Trim();
+            if (str == "")
+            {
+                MessageBox.Show("Chưa nhập thông tin tìm kiếm");
+                return;
+            }
+            PBdgv.DataSource = PhongBanDAO.Instance.Search(str);
         }
 
         private void searchTB_KeyDown(object sender, KeyEventArgs e)
         {
-
+            if (e.KeyCode == Keys.Enter)
+            {
+                string str = searchTB.Text.Trim();
+                if (str == "")
+                {
+                    MessageBox.Show("Chưa nhập thông tin tìm kiếm");
+                    return;
+                }
+                PBdgv.DataSource = PhongBanDAO.Instance.Search(str);
+            }
         }
 		
         private HelpProvider hlpProvider;
