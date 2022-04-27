@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using QuanLyNhanSu.DAO;
+using QuanLyNhanSu.DTO;
+
 
 namespace QuanLyNhanSu.GUI
 {
@@ -30,7 +32,7 @@ namespace QuanLyNhanSu.GUI
             NVdgv.DataSource = nvDAO.GetAll();
             EditDataGridView();
             LoadComboboxPhongBan();
-            //Help();
+            Help();
         }
 
         private void EditDataGridView()
@@ -173,17 +175,68 @@ namespace QuanLyNhanSu.GUI
         {
 
         }
-		
+
+        private HelpProvider hlpProvider;
+        bool isHelp = false;
+
         private void Help()
         {
-			
+            hlpProvider = new HelpProvider();
+
+            hlpProvider.SetShowHelp(backButton, true);
+            hlpProvider.SetHelpString(backButton, "Tro ve man hinh truoc.");
+
+            hlpProvider.SetShowHelp(tenTbox, true);
+            hlpProvider.SetHelpString(tenTbox, "Nhap Ho Ten cua nhan vien.");
+
+            hlpProvider.SetShowHelp(namRb, true);
+            hlpProvider.SetHelpString(namRb, "Click chon neu gioi tinh la Nam.".ToString());
+
+            hlpProvider.SetShowHelp(nuRB, true);
+            hlpProvider.SetHelpString(nuRB, "Click chon neu gioi tinh la Nu.".ToString());
+
+            hlpProvider.SetShowHelp(ngaySinhDTP, true);
+            hlpProvider.SetHelpString(ngaySinhDTP, "Nhap Ngay Sinh cua nhan vien.");
+
+            hlpProvider.SetShowHelp(diaChiTB, true);
+            hlpProvider.SetHelpString(diaChiTB, "Nhap Dia Chi cua nhan vien.");
+
+            hlpProvider.SetShowHelp(sdtTB, true);
+            hlpProvider.SetHelpString(sdtTB, "Nhap So Dien Thoai cua nhan vien.");
+
+            hlpProvider.SetShowHelp(luongTB, true);
+            hlpProvider.SetHelpString(luongTB, "Nhap Luong cua nhan vien.");
+
+            hlpProvider.SetShowHelp(comboBox1, true);
+            hlpProvider.SetHelpString(comboBox1, "Click chon Phong Ban cua nhan vien.");
+
+            hlpProvider.SetShowHelp(themButton, true);
+            hlpProvider.SetHelpString(themButton, "1. Click Reset button." + Environment.NewLine + "2. Nhap thong tin cua Nhan Vien." + Environment.NewLine + "3. Click Them button de them moi.");
+
+            hlpProvider.SetShowHelp(suaButton, true);
+            hlpProvider.SetHelpString(suaButton, "1. Click chon Nhan Vien muon sua o danh sach ben duoi." + Environment.NewLine + "2. Sua thong tin cua Nhan Vien." + Environment.NewLine + "3. Click Sua button de sua thong tin.");
+
+            hlpProvider.SetShowHelp(xoaButton, true);
+            hlpProvider.SetHelpString(xoaButton, "1. Click chon Nhan Vien muon xoa o danh sach ben duoi." + Environment.NewLine + "2. Click Xoa button de xoa.");
+
+            hlpProvider.SetShowHelp(resetButton, true);
+            hlpProvider.SetHelpString(resetButton, "Click de reset.");
+
+            hlpProvider.SetShowHelp(searchButton, true);
+            hlpProvider.SetHelpString(searchButton, "1. Nhap thong tin tim kiem o ben canh" + Environment.NewLine + "2. Click Tim Kiem button de tim kiem." + Environment.NewLine + "3. Ket qua tim kiem hien thi o danh sach ben duoi.");
+
+            hlpProvider.SetShowHelp(searchTB, true);
+            hlpProvider.SetHelpString(searchTB, "Nhap thong tin tim kiem.");
+
+            hlpProvider.SetShowHelp(NVdgv, true);
+            hlpProvider.SetHelpString(NVdgv, "Click de chon Nhan Vien.");
         }
 
         private void helpButton_Click(object sender, EventArgs e)
         {
-            // isHelp = !isHelp;
-            // MaximizeBox = !isHelp;
-            // MinimizeBox = !isHelp;
+            isHelp = !isHelp;
+            MaximizeBox = !isHelp;
+            MinimizeBox = !isHelp;
         }
     }
 }

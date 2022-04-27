@@ -136,7 +136,7 @@
             // 
             // backButton
             // 
-            this.backButton.Image = global::QuanLyNhanSu.Properties.Resources._3643764_back_backward_left_reply_turn_113415;
+           /* this.backButton.Image = global::QuanLyNhanSu.Properties.Resources._3643764_back_backward_left_reply_turn_113415;*/
             this.backButton.Location = new System.Drawing.Point(3, 3);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(67, 34);

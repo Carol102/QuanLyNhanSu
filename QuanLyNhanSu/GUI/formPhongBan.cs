@@ -37,7 +37,7 @@ namespace QuanLyNhanSu.GUI
         {
             PBdgv.DataSource = pbDAO.GetAll();
             EditDataGridView();
-            //Help();
+            Help();
         }
 
         private void EditDataGridView()
@@ -120,13 +120,51 @@ namespace QuanLyNhanSu.GUI
 		
         private void Help()
         {
+            hlpProvider = new HelpProvider();
+
+            hlpProvider.SetShowHelp(backButton, true);
+            hlpProvider.SetHelpString(backButton, "Tro ve man hinh truoc.");
+
+            hlpProvider.SetShowHelp(tenPBTbox, true);
+            hlpProvider.SetHelpString(tenPBTbox, "Nhap Ten Phong Ban.");
+
+            hlpProvider.SetShowHelp(sdtPbTB, true);
+            hlpProvider.SetHelpString(sdtPbTB, "Nhap SDT cua Phong Ban.");
+
+            hlpProvider.SetShowHelp(moTaTB, true);
+            hlpProvider.SetHelpString(moTaTB, "Nhap Mo Ta cua Phong Ban.");
+
+            hlpProvider.SetShowHelp(themButton, true);
+            hlpProvider.SetHelpString(themButton, "1. Click Reset button." + Environment.NewLine + "2. Nhap thong tin cua Phong Ban." + Environment.NewLine + "3. Click Them button de them moi.");
+
+            hlpProvider.SetShowHelp(suaButton, true);
+            hlpProvider.SetHelpString(suaButton, "1. Click chon Phong Ban muon sua o danh sach ben duoi." + Environment.NewLine + "2. Sua thong tin cua Phong Ban." + Environment.NewLine + "3. Click Sua button de sua thong tin.");
+
+            hlpProvider.SetShowHelp(xoaButton, true);
+            hlpProvider.SetHelpString(xoaButton, "1. Click chon Phong Ban muon xoa o danh sach ben duoi." + Environment.NewLine + "2. Click Xoa button de xoa.");
+
+            hlpProvider.SetShowHelp(resetButton, true);
+            hlpProvider.SetHelpString(resetButton, "Click de reset.");
+
+            hlpProvider.SetShowHelp(searchButton, true);
+            hlpProvider.SetHelpString(searchButton, "1. Nhap thong tin tim kiem o ben canh" + Environment.NewLine + "2. Click Tim Kiem button de tim kiem." + Environment.NewLine + "3. Ket qua tim kiem hien thi o danh sach ben duoi.");
+
+            hlpProvider.SetShowHelp(searchTB, true);
+            hlpProvider.SetHelpString(searchTB, "Nhap thong tin tim kiem.");
+
+            hlpProvider.SetShowHelp(PBdgv, true);
+            hlpProvider.SetHelpString(PBdgv, "Click de chon Phong Ban.");
 
         }
 
         private void helpButton_Click(object sender, EventArgs e)
         {
-
+            isHelp = !isHelp;
+            MaximizeBox = !isHelp;
+            MinimizeBox = !isHelp;
         }
-
+       
     }
 }
+
+

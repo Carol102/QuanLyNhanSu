@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 using QuanLyNhanSu.DTO;
 
 namespace QuanLyNhanSu.DAO
@@ -33,6 +34,8 @@ namespace QuanLyNhanSu.DAO
             int result = DataAccess.Instance.ExecuteNonQuery("[dbo].[insertPhongBan] @tenPB , @sdtPB , @motaPB", new object[] { tenPhongBan, sdt, mota });
             return result > 0;
         }
-        
+
+    
+
     }
 }

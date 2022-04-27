@@ -1,0 +1,8 @@
+C:\Users\nameDell\Desktop\QuanLyNhanSu\QuanLyNhanSu\obj\Debug\QuanLyNhanSu.csproj.AssemblyReference.cache
+C:\Users\nameDell\Desktop\QuanLyNhanSu\QuanLyNhanSu\obj\Debug\QuanLyNhanSu.GUI.formMain.resources
+C:\Users\nameDell\Desktop\QuanLyNhanSu\QuanLyNhanSu\obj\Debug\QuanLyNhanSu.GUI.formNhanVien.resources
+C:\Users\nameDell\Desktop\QuanLyNhanSu\QuanLyNhanSu\obj\Debug\QuanLyNhanSu.GUI.formPhongBan.resources
+C:\Users\nameDell\Desktop\QuanLyNhanSu\QuanLyNhanSu\obj\Debug\QuanLyNhanSu.Login.resources
+C:\Users\nameDell\Desktop\QuanLyNhanSu\QuanLyNhanSu\obj\Debug\QuanLyNhanSu.Properties.Resources.resources
+C:\Users\nameDell\Desktop\QuanLyNhanSu\QuanLyNhanSu\obj\Debug\QuanLyNhanSu.csproj.GenerateResource.cache
+C:\Users\nameDell\Desktop\QuanLyNhanSu\QuanLyNhanSu\obj\Debug\QuanLyNhanSu.csproj.CoreCompileInputs.cache
