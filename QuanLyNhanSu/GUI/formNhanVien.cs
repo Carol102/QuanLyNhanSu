@@ -122,7 +122,34 @@ namespace QuanLyNhanSu.GUI
 
         private void suaButton_Click(object sender, EventArgs e)
         {
-
+            int idNV;
+            Int32.TryParse(idLabel.Text.Trim(), out idNV);
+            string tenNhanVien = tenTbox.Text.Trim();
+            int idPB = -1;
+            Int32.TryParse(comboBox1.SelectedValue.ToString(), out idPB);
+            string gioiTinh = namRb.Checked ? "Nam" : "N?";
+            DateTime ngaySinh;
+            DateTime.TryParse(ngaySinhDTP.Text, out ngaySinh);
+            string dc = diaChiTB.Text.Trim();
+            string sdt = sdtTB.Text.Trim();
+            int luong = -1;
+            Int32.TryParse(luongTB.Text.ToString().Trim(), out luong);
+            try
+            {
+                if (tenNhanVien == "" || idPB == -1 || ngaySinh == null || idNV == -1 || dc == "" || sdt == "" || luong == -1)
+                {
+                    MessageBox.Show("Vui lòng điền đầy đủ thông tin!");
+                    return;
+                }
+                NhanVienDAO.Instance.Update(idNV, tenNhanVien, gioiTinh, ngaySinh, dc, sdt, luong, idPB);
+                MessageBox.Show("Sửa thành công!");
+                NVdgv.DataSource = nvDAO.GetAll();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show("Có lỗi xảy ra!" + err.ToString());
+                NVdgv.DataSource = nvDAO.GetAll();
+            }
         }
 
         private void xoaButton_Click(object sender, EventArgs e)
