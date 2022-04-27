@@ -66,5 +66,22 @@ namespace QuanLyNhanSu
                 MessageBox.Show("lỗi kết nối csdl !");
             }
         }
+
+        private HelpProvider hlpProvider;
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+            hlpProvider = new HelpProvider();
+
+
+            hlpProvider.SetShowHelp(txtUsername, true);
+            hlpProvider.SetHelpString(txtUsername, "Nhap Ten Dang Nhap cua ban.");
+
+            hlpProvider.SetShowHelp(txtPassword, true);
+            hlpProvider.SetHelpString(txtPassword, "Nhap Mat Khau cua ban.".ToString());
+
+            hlpProvider.SetShowHelp(loginButton, true);
+            hlpProvider.SetHelpString(loginButton, "Click de Dang Nhap.");
+        }
     }
 }
