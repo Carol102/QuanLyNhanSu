@@ -157,6 +157,19 @@ namespace QuanLyNhanSu.GUI
         private void xoaButton_Click(object sender, EventArgs e)
         {
 
+            int idNV;
+            Int32.TryParse(idLabel.Text.Trim(), out idNV);
+            try
+            {
+                NhanVienDAO.Instance.Delete(idNV);
+                MessageBox.Show("Xóa thành công!");
+                NVdgv.DataSource = nvDAO.GetAll();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show("Có lỗi xảy ra!" + err.ToString());
+                NVdgv.DataSource = nvDAO.GetAll();
+            }
         }
 
         private void backButton_Click(object sender, EventArgs e)
@@ -169,10 +182,27 @@ namespace QuanLyNhanSu.GUI
         private void searchButton_Click(object sender, EventArgs e)
         {
 
+            string str = searchTB.Text.Trim();
+            if (str == "")
+            {
+                MessageBox.Show("Chưa nhập thông tin tìm kiếm!");
+                return;
+            }
+            NVdgv.DataSource = NhanVienDAO.Instance.Search(str);
         }
 
         private void searchTB_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.KeyCode == Keys.Enter)
+            {
+                string str = searchTB.Text.Trim();
+                if (str == "")
+                {
+                    MessageBox.Show("Chưa nhập thông tin tìm kiếm!");
+                    return;
+                }
+                NVdgv.DataSource = NhanVienDAO.Instance.Search(str);
+            }
 
         }
 
@@ -237,6 +267,11 @@ namespace QuanLyNhanSu.GUI
             isHelp = !isHelp;
             MaximizeBox = !isHelp;
             MinimizeBox = !isHelp;
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
