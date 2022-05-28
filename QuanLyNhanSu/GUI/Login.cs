@@ -68,6 +68,7 @@ namespace QuanLyNhanSu
         }
 
         private HelpProvider hlpProvider;
+        bool isHelp = false;
 
         private void Login_Load(object sender, EventArgs e)
         {
@@ -82,6 +83,13 @@ namespace QuanLyNhanSu
 
             hlpProvider.SetShowHelp(loginButton, true);
             hlpProvider.SetHelpString(loginButton, "Click de Dang Nhap.");
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            isHelp = !isHelp;
+            MaximizeBox = !isHelp;
+            MinimizeBox = !isHelp;
         }
     }
 }

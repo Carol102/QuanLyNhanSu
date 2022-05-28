@@ -33,8 +33,35 @@ namespace QuanLyNhanSu.GUI
             String sql1 = "select count(*) from PhongBan";
             dt1 = DataAccess.Instance.ExecuteQuery(sql1);
             PBlabel.Text = dt1.Rows[0][0].ToString();
+
+            Help();
+        }
+        private HelpProvider hlpProvider;
+        bool isHelp = false;
+
+        private void Help()
+        {
+            hlpProvider = new HelpProvider();
+
+            hlpProvider.SetShowHelp(buttonNV, true);
+            hlpProvider.SetHelpString(buttonNV, "Di den man hinh Quan ly Nhan Vien.");
+
+            hlpProvider.SetShowHelp(buttonPB, true);
+            hlpProvider.SetHelpString(buttonPB, "Di den man hinh Quan ly Phong Ban.");
+
+            hlpProvider.SetShowHelp(NVlabel, true);
+            hlpProvider.SetHelpString(NVlabel, "Tong so Nhan Vien.");
+
+            hlpProvider.SetShowHelp(PBlabel, true);
+            hlpProvider.SetHelpString(PBlabel, "Tong so Phong Ban.");
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            isHelp = !isHelp;
+            MaximizeBox = !isHelp;
+            MinimizeBox = !isHelp;
+        }
         private void buttonNV_Click(object sender, EventArgs e)
         {
             formNhanVien frmnv = new formNhanVien();
